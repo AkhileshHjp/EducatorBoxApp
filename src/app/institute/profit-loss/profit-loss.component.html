@@ -1,0 +1,112 @@
+<!----------------------------------------------- Profit & Loss Table Start Here ------------------------------------------------------------>
+<div class="head">
+  <span class="enquiry_text">Profit & Loss Details</span>
+</div>
+<div class="count_area_profit_loss">
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>Year</mat-label>
+      <mat-select (valueChange)="onyear($event)" [value]="cur_year">
+        <mat-option value="2017">2017</mat-option>
+        <mat-option value="2018">2018</mat-option>
+        <mat-option value="2019">2019</mat-option>
+        <mat-option value="2020">2020</mat-option>
+        <mat-option value="2021">2021</mat-option>
+        <mat-option value="2022">2022</mat-option>
+        <mat-option value="2023">2023</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Month</mat-label>
+      <mat-select (valueChange)="onmonth($event)" [value]="monthselect">
+        <mat-option value="all">All</mat-option>
+        <mat-option value="01">January</mat-option>
+        <mat-option value="02">February</mat-option>
+        <mat-option value="03">March</mat-option>
+        <mat-option value="04">April</mat-option>
+        <mat-option value="05">May</mat-option>
+        <mat-option value="06">June</mat-option>
+        <mat-option value="07">July</mat-option>
+        <mat-option value="08">August</mat-option>
+        <mat-option value="09">September</mat-option>
+        <mat-option value="10">October</mat-option>
+        <mat-option value="11">November</mat-option>
+        <mat-option value="12">December</mat-option>
+      </mat-select>
+    </mat-form-field>
+    </div>
+
+    <div>
+      <mat-form-field appearance="fill">
+        <mat-label>From</mat-label>
+        <input type="date" matInput class="boxdate" (change)="fromdate($event)">
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>To</mat-label>
+        <input type="date" matInput class="boxdate" (change)="todate($event)" [readonly]="onform">
+      </mat-form-field>
+    </div>
+
+    <span class="example-spacer"></span>
+    <input type="text" class="search_box" placeholder="Search" matInput (keyup)="applyFilter($event)" #input>
+  </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <!----------------------------------------------- S.N. ------------------------------------------------------------>
+
+      <ng-container matColumnDef="enq_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+        </td>
+      </ng-container>
+
+      <!----------------------------------------------- Student Name ------------------------------------------------------>
+
+      <ng-container matColumnDef="ledger_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let row"> {{row.ledger_date | date: 'dd-MM-yyyy'}}</td>
+      </ng-container>
+
+      <!----------------------------------------------- Mobile Number ------------------------------------------------------->
+
+      <ng-container matColumnDef="ledger_today_Recived">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Income </th>
+        <td mat-cell *matCellDef="let row"> {{row.ledger_today_Recived}} </td>
+      </ng-container>
+
+      <!----------------------------------------------- Course ------------------------------------------------------->
+
+      <ng-container matColumnDef="ledger_expence">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Expence </th>
+        <td mat-cell *matCellDef="let row"> {{row.ledger_expence}} </td>
+      </ng-container>
+
+      <!----------------------------------------------- Gender ------------------------------------------------------->
+
+      <ng-container matColumnDef="profit_loss">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Profit/Loss </th>
+        <td mat-cell *matCellDef="let row"> {{row.profit_loss}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" id="thead"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="thead"></tr>
+
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator #paginatorRef [pageSizeOptions]="[10, 22, 55, 100]"
+      aria-label="Select page of users"></mat-paginator>
+
+  </div>
+  <div id="status_bar">
+    <span>Total Income : {{total_income | currency:'INR':'symbol-narrow':'0.2'}}</span>
+    <span>Total Expence : {{total_expence | currency:'INR':'symbol-narrow':'0.2'}}</span>
+    <span>Profit/Loss : {{total_profit | currency:'INR':'symbol-narrow':'0.2'}}</span>
+  </div>

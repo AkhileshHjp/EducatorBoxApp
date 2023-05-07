@@ -1,0 +1,97 @@
+<div class="sidebar">
+    <div class="top_head">
+        <span class="title_text">{{inst_name | titlecase}}</span>
+    </div>
+    <div class="menu">
+        <div [ngClass]="'menu_item'">
+
+            <button mat-button class="menu-button" [routerLink]="['dashboard']" routerLinkActive="active">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['course']" routerLinkActive="active">
+                <mat-icon>school</mat-icon>
+                <span>Course</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['batch']" routerLinkActive="active">
+                <mat-icon>local_library</mat-icon>
+                <span>Batch</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['takeaddmission']" routerLinkActive="active">
+                <mat-icon>airline_seat_recline_normal</mat-icon>
+                <span>Take Admission</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['paymentreceived']" routerLinkActive="active">
+                <mat-icon>payment</mat-icon>
+                <span>Fee</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['dues']" routerLinkActive="active">
+                <mat-icon>redeem</mat-icon>
+                <span>Dues</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['liveclass']" routerLinkActive="active">
+                <mat-icon>chrome_reader_mode</mat-icon>
+                <span>Live Class</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['query']" routerLinkActive="active">
+                <mat-icon>accessible</mat-icon>
+                <span>Query</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['onlinetest']" routerLinkActive="active">
+                <mat-icon>wc</mat-icon>
+                <span>Test</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['result']" routerLinkActive="active">
+                <mat-icon>account_balance_wallet</mat-icon>
+                <span>Result</span>
+            </button>
+
+            <button mat-button class="menu-button" [routerLink]="['quizdashboard']" routerLinkActive="active">
+                <mat-icon>redeem</mat-icon>
+                <span>Quiz</span>
+            </button>
+
+            <div>
+                <button mat-button class="menu-button" (click)="report_dropdown()">
+                    <mat-icon>list_alt</mat-icon>
+                    <span>Study Material</span>
+                    <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+                </button>
+
+
+                <div id="dropdown_report">
+                    <button mat-button class="master_icon" [routerLink]="['instbook']" routerLinkActive="active">
+                        <mat-icon>book</mat-icon>
+                        <span>Book</span>
+                    </button>
+
+                    <button mat-button class="master_icon" [routerLink]="['instnotes']" routerLinkActive="active">
+                        <mat-icon>notes</mat-icon>
+                        <span>Notes</span>
+                    </button>
+
+                    <button mat-button class="master_icon" [routerLink]="['instsyllabus']" routerLinkActive="active">
+                        <mat-icon>style</mat-icon>
+                        <span>Syllabus</span>
+                    </button>
+
+                    <button mat-button class="master_icon" [routerLink]="['instquestionbank']"
+                        routerLinkActive="active">
+                        <mat-icon>question_answer</mat-icon>
+                        <span>Question Bank</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

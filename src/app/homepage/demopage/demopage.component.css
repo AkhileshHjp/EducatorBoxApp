@@ -1,0 +1,191 @@
+/* ::ng-deep .mat-dialog-container {
+    padding: 0 !important;
+    background-color: white !important;
+} */
+
+#wrapper {
+    width: 900px;
+    height: auto;
+}
+
+mat-toolbar {
+    height: 50px;
+    display: flex;
+    /* padding: 20px; */
+    justify-content: space-between;
+
+    background: none;
+    /* background-color: rgb(242, 242, 242); */
+
+    /* background-color: rgb(242, 242, 242); */
+    background: none;
+
+}
+
+.side_img {
+    width: 40%;
+    height: 100%;
+    float: left;
+}
+
+.side_img img {
+    width: 100%;
+    height: 100%;
+}
+
+.user_info {
+    width: calc(100% - 40%);
+    height: 100%;
+    float: right;
+    padding-top: 8px;
+}
+
+mat-form-field {
+    margin: 5px 0px 0px 17px;
+    width: 45%;
+}
+
+#password {
+    width: 243px;
+}
+
+#address {
+    width: calc(100% - 35px);
+    margin-left: 15px;
+}
+
+textarea {
+    height: 17px;
+}
+
+.register {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+button {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+
+@media (min-width:968px) and (max-width: 1200px) {
+    #wrapper {
+        width: 630px;
+        height: 450px;
+    }
+
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+        padding: 8px 30px;
+    }
+
+    mat-form-field {
+        width: calc(100% - 30px)
+    }
+
+    #password {
+        width: calc(100% - 30px);
+    }
+
+    #address {
+        width: calc(100% - 30px);
+        margin-left: 17px;
+    }
+}
+
+@media (min-width:768px) and (max-width:968px) {
+    #wrapper {
+        width: 100%;
+        height: 470px;
+    }
+
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+        padding: 8px 10px;
+    }
+
+    mat-form-field {
+        width: calc(100% - 30px)
+    }
+
+    #password {
+        width: calc(100% - 30px);
+    }
+    #address {
+        width: calc(100% - 30px);
+        margin-left: 16px;
+    }
+}
+
+@media(min-width:420px)and (max-width:768px) {
+    #wrapper {
+        width: 100%;
+        height: 380px;
+    }
+
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+        padding: 8px 10px;
+    }
+
+    mat-form-field {
+        width: calc(100% - 30px)
+    }
+
+    #password {
+        width: calc(100% - 30px);
+    }
+    #address {
+        width: calc(100% - 30px);
+        margin-left: 16px;
+    }
+}
+
+@media screen and (max-width:420px) {
+    #wrapper {
+        width: 100%;
+        height: 370px;
+    }
+
+    .side_img {
+        width: 100%;
+        height: 40%;
+    }
+
+    .user_info {
+        width: 100%;
+        height: 70%;
+    }
+
+    mat-form-field {
+        width: calc(100% - 30px)
+    }
+
+    #password {
+        width: calc(100% - 30px);
+    }
+
+    #address {
+        width: calc(100% - 28px);
+    }
+
+}

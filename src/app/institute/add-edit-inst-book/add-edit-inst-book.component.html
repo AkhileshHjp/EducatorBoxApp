@@ -1,0 +1,42 @@
+<mat-toolbar class="add_form_title">
+    <span class="example-spacer">Add Book</span>
+    <mat-icon mat-dialog-close class="close-mat-icon">cancel</mat-icon>
+</mat-toolbar>
+
+<div id="wrapper">
+    <form [formGroup]="inst_book_form">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course_id_fk">
+                <mat-option *ngFor="let course of course_data"
+                    [value]="course.course_id">{{course.course_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="user_image">
+            <button (click)="image.click()">
+                <img alt="image" [src]="image_url">
+                Uplodad PDF
+                <input class="d-none" type="file" accept=".jpg,.png,.jpeg," accept=".pdf, .png" #image (change)="OnUpload(image.files)">
+            </button>
+        </div><br>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Book Title</mat-label>
+            <input matInput formControlName="inst_book_title" placeholder="Enter book title">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="inst_book_description" placeholder="Enter description">
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="primary" (click)="inst_book_btn()"
+                [disabled]="!this.inst_book_form.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

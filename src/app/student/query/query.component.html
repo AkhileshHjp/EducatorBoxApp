@@ -1,0 +1,57 @@
+  <div id="manage_table_wrapper">
+    <div class="head">
+      <span>Query</span>
+      <mat-icon id="add_course" (click)="add_course()">add_circle</mat-icon>
+    </div>
+    <div class="count_area">
+      <span>Total : {{query_count}}</span>
+      <div class="search">
+        <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+      </div>
+    </div>
+
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+      <ng-container matColumnDef="query_id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N </th>
+        <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="query_priority">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Priority</th>
+        <td mat-cell *matCellDef="let row">{{row.query_priority}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="query_message">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Massage </th>
+        <td mat-cell *matCellDef="let row">{{row.query_message}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="query_answer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Query Answer </th>
+        <td mat-cell *matCellDef="let row">{{row.query_answer}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="query_date">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+        <td mat-cell *matCellDef="let row">{{row.query_date | date: 'dd-MM-yyyy'}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Status </th>
+        <td mat-cell *matCellDef="let row"><b [hidden]="row.status == 1" style="color: Red;">Pending</b> <b [hidden]="row.status == 0" style="color: green">Answer</b></td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns" id="thead"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="thead"></tr>
+
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+      </tr>
+    </table>
+
+    <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+  </div>
+</div>

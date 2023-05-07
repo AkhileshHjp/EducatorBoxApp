@@ -1,0 +1,114 @@
+<mat-toolbar>
+    <span class="example-spacer">Update Profile</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="student_form">
+
+        <div class="user_image" (click)="image.click()">
+            <img alt="image" [src]="image_url">
+            <input class="d-none" type="file" accept=".jpg,.png,.jpeg," #image (change)="onimage(image.files)"
+                [disabled]="student_profile_data.profile_status == 1">
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="std_name" placeholder="Enter Name"
+                [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Father Name</mat-label>
+            <input matInput formControlName="std_father_name" [readonly]="student_profile_data.profile_status == 1"
+                placeholder="Enter Father name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Father Occupation</mat-label>
+            <input matInput formControlName="std_father_occupation"
+                [readonly]="student_profile_data.profile_status == 1" placeholder="Enter Father Occupation">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Whatapp No</mat-label>
+            <input formControlName="std_whatsapp_no" matInput type="number" onkeypress=" return this.value.length < 10"
+                placeholder="Enter whatsapp no" [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Aadhar</mat-label>
+            <input type="number" matInput formControlName="std_aadhar" onkeypress=" return this.value.length < 12"
+                placeholder="Enter Aadhar no" [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="std_email" readonly>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>DOB</mat-label>
+            <input type="date" class="boxdate" matInput formControlName="std_dob"
+                [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Gender : </mat-label>
+            <mat-select formControlName="std_gender" [ngModel]="autoselect"
+                [disabled]="student_profile_data.profile_status == 1">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="std_state" (valueChange)="get_district($event)"
+                [disabled]="student_profile_data.profile_status == 1">
+                <mat-option *ngFor="let state of state_data"
+                    [value]="state.state_name">{{state.state_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>District</mat-label>
+            <mat-select formControlName="std_district" [disabled]="student_profile_data.profile_status == 1">
+                <mat-option *ngFor="let district of district_data"
+                    [value]="district.district_name">{{district.district_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Center Registration Number</mat-label>
+            <input matInput formControlName="center_reg_no" placeholder="Enter Center Reg no"
+                [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" hidden>
+            <mat-label>Date</mat-label>
+            <input type="date" matInput formControlName="std_regist_date"
+                [readonly]="student_profile_data.profile_status == 1">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Registration Number</mat-label>
+            <input matInput formControlName="std_regist_no" readonly placeholder="Sys Reg no">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Address</mat-label>
+            <textarea formControlName="std_address" matInput placeholder="Enter Address"
+                [readonly]="student_profile_data.profile_status == 1"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number" readonly formControlName="std_id" hidden>
+        <input type="text" readonly formControlName="std_img" hidden>
+        <input type="number" readonly formControlName="institute_id_fk" hidden>
+
+        <div class="submit" [hidden]="student_profile_data.profile_status == 1">
+            <button mat-raised-button color="primary" (click)="update_profile()">Update</button>
+        </div>
+    </form>
+</div>

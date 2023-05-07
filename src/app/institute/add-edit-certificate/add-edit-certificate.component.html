@@ -1,0 +1,362 @@
+<div class="view_notice">
+	<span class="notice_text">{{action_text}}</span>
+</div>
+<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
+
+	<!-- ////////////////////////////////////////// For Personal Information Form Starting Here ////////////////////////////////// -->
+	<ng-container ngbNavItem>
+		<a ngbNavLink class="certificate_link" routerLinkActive="active">Personal Information</a>
+		<ng-template ngbNavContent>
+			<div class="content_area">
+				<form [formGroup]="personal_form">
+					<div class="column">
+						<mat-form-field appearance="fill">
+							<mat-label>Name</mat-label>
+							<input matInput formControlName="std_name" placeholder="Enter name">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Father Name</mat-label>
+							<input matInput formControlName="std_father_name" placeholder="Enter father name">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Mother Name</mat-label>
+							<input matInput formControlName="std_mother_name" placeholder="Enter mother name">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>DOB</mat-label>
+							<input type="date" class="boxdate" max="5050-01-01" matInput formControlName="std_dob">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Contact No</mat-label>
+							<input type="number" matInput formControlName="std_contact_no"
+								onkeypress=" return this.value.length < 10" placeholder="Enter contact no">
+						</mat-form-field><br>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Alternate Mobile No</mat-label>
+							<input type="number" matInput formControlName="std_alt_contect_no"
+								onkeypress=" return this.value.length < 10" placeholder="Enter alternate mobile no">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>E-Mail</mat-label>
+							<input type="email" matInput formControlName="std_email" placeholder="Enter email">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Aadhar No</mat-label>
+							<input type="number" matInput formControlName="std_aadhar_no"
+								onkeypress=" return this.value.length < 12" placeholder="Enter aadhar no">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Category</mat-label>
+							<mat-select formControlName="std_category" [ngModel]="catselect">
+								<mat-option value="Select">Select</mat-option>
+								<mat-option value="SC">SC</mat-option>
+								<mat-option value="ST">ST</mat-option>
+								<mat-option value="OBC">OBC</mat-option>
+								<mat-option value="EBC">EBC</mat-option>
+								<mat-option value="General">General</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Gender</mat-label>
+							<mat-select formControlName="std_gender" [ngModel]="autoselect">
+								<mat-option value="Male">Male</mat-option>
+								<mat-option value="Female">Female</mat-option>
+								<mat-option value="Other">Other</mat-option>
+							</mat-select>
+						</mat-form-field>
+						
+
+						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+						<input type="number" readonly formControlName="certificate_id" redonly hidden>
+					</div>
+				</form>
+				<div mat-dialog-action [align]="'end'" id="main_button">
+					<button mat-raised-button class="add_btn" type="submit"
+						style="background-color: #1d1f23; color: white;" (click)="personal_add()"
+						[disabled]="!this.personal_form.valid" matStepperNext>Save&Next</button>
+				</div>
+			</div>
+		</ng-template>
+	</ng-container>
+	<!-- /////////////////////////////////////////// For Personal Information Form Ending Here /////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////////// For Permanent Address Form Starting Heare ////////////////////////////////////// -->
+	<ng-container ngbNavItem>
+		<a ngbNavLink class="certificate_link" routerLinkActive="active" (click)="get_certificate_id()">Permanent
+			Address</a>
+		<ng-template ngbNavContent>
+			<div class="content_area">
+				<form [formGroup]="permanet_form">
+					<div class="column">
+
+						<mat-form-field appearance="fill" class="example-full-width">
+							<mat-label>Country</mat-label>
+							<mat-select formControlName="std_country" (valueChange)="get_state($event)"
+								[ngModel]="Country">
+								<mat-option *ngFor="let country of country_data"
+									[value]="country.country_name">{{country.country_name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>State</mat-label>
+							<mat-select formControlName="std_state" (valueChange)="get_district($event)"
+								[ngModel]="state">
+								<mat-option *ngFor="let state of state_data"
+									[value]="state.state_name">{{state.state_name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>District</mat-label>
+							<mat-select formControlName="std_distric" (valueChange)="get_block($event)">
+								<mat-option *ngFor="let district of district_data"
+									[value]="district.district_name">{{district.district_name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Block</mat-label>
+							<mat-select formControlName="std_block">
+								<mat-option *ngFor="let block of block_data"
+									[value]="block.block_name">{{block.block_name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+
+						<mat-form-field appearance="fill">
+							<mat-label>Panchayat / Ward</mat-label>
+							<input matInput formControlName="std_panchayat" placeholder="Enter panchayat / ward">
+						</mat-form-field>
+
+						<br>
+						<mat-form-field appearance="fill">
+							<mat-label>Area</mat-label>
+							<mat-select formControlName="std_area">
+								<mat-option value="Rural">Rural</mat-option>
+								<mat-option value="Urban">Urban</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+
+						<mat-form-field appearance="fill">
+							<mat-label>Village / City</mat-label>
+							<input matInput formControlName="std_village" placeholder="Enter village / city">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Post Office</mat-label>
+							<input matInput formControlName="std_post_office" placeholder="Enter post office">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Police Station</mat-label>
+							<input matInput formControlName="std_ps" placeholder="Enter police station">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Pin Code</mat-label>
+							<input type="number" matInput formControlName="std_pin_code"
+								onkeypress=" return this.value.length < 6" placeholder="Enter pin code">
+						</mat-form-field>
+
+						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+					</div>
+				</form>
+				<div mat-dialog-action [align]="'end'" id="main_button">
+					<button mat-raised-button class="add_btn" type="submit"
+						style="background-color: #1d1f23; color: white;" (click)="permanent_update()"
+						[disabled]="!this.permanet_form.valid" matStepperNext>Save&Next</button>
+				</div>
+			</div>
+		</ng-template>
+	</ng-container>
+	<!-- /////////////////////////////////////////// For Permanent Address Form Ending Heare ////////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////// for Registracton Form starting Here ////////////////////////////////// -->
+
+	<ng-container ngbNavItem><br>
+		<a ngbNavLink class="certificate_link" routerLinkActive="active">Certificate Details</a>
+
+		<ng-template ngbNavContent>
+			<div class="content_area">
+				<form [formGroup]="registration_form">
+					<mat-form-field appearance="fill">
+						<mat-label>Registration No</mat-label>
+						<input matInput type="text" formControlName="std_rigistration_no"
+							placeholder="Enter registration no">
+					</mat-form-field>
+
+					<mat-form-field appearance="fill">
+						<mat-label>Center Code</mat-label>
+						<input matInput formControlName="std_center_code" placeholder="Enter center code">
+					</mat-form-field>
+
+					<mat-form-field appearance="fill">
+						<mat-label>Center Name</mat-label>
+						<input matInput formControlName="std_center_name" placeholder="Enter center name">
+					</mat-form-field>
+
+					<mat-form-field appearance="fill">
+						<mat-label>Certificate No</mat-label>
+						<input matInput formControlName="std_certificate_no" placeholder="Enter certificate no">
+					</mat-form-field>
+
+					<mat-form-field appearance="fill">
+						<mat-label>Total Marks</mat-label>
+						<input matInput type="number" formControlName="std_total_marks" placeholder="Enter total marks">
+					</mat-form-field>
+
+					<div class="registration_form_left">
+
+						<mat-form-field appearance="fill">
+							<mat-label>Registration Date</mat-label>
+							<input matInput type="date" class="boxdate" max="5050-01-01" formControlName="std_rigistration_date">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Total Amount</mat-label>
+							<input matInput type="number" formControlName="std_total_amount"
+								placeholder="Enter total amount">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Date Of Issue</mat-label>
+							<input type="date" class="boxdate" max="5050-01-01" matInput formControlName="std_date_issue">
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Select Course</mat-label>
+							<mat-select formControlName="course_id_fk">
+								<mat-option *ngFor="let course of course_data"
+									[value]="course.course_name">{{course.course_name}}</mat-option>
+							</mat-select>
+						</mat-form-field>
+
+						<mat-form-field appearance="fill">
+							<mat-label>Ref. Name</mat-label>
+							<input matInput formControlName="std_ref_name" placeholder="Enter ref. name">
+						</mat-form-field>
+
+						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
+
+						<div mat-dialog-action [align]="'end'" id="main_button">
+							<button mat-raised-button class="add_btn" type="submit"
+								style="background-color: #1d1f23; color: white;" (click)="registration_update()"
+								[disabled]="!this.registration_form.valid">Save&Next</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</ng-template>
+	</ng-container>
+
+	<!-- /////////////////////////////////////// for Registracton Form Ending Here ////////////////////////////////// -->
+
+	<!-- /////////////////////////////////////// for Upload Document Form starting Here ////////////////////////////////// -->
+	<ng-container ngbNavItem><br>
+		<a ngbNavLink class="certificate_link" routerLinkActive="active">Upload Document</a>
+
+		<ng-template ngbNavContent>
+			<div class="content_area">
+				<form [formGroup]="document_form">
+					<div id="doc_area">
+						<!-- for image upload -->
+						<div class="img_box">
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="image_url">
+								</div>
+							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg," #image
+									(change)="onimage(image.files)">
+								<button (click)="image.click()">
+									Upload Image
+								</button>
+							</div>
+
+						</div>
+
+
+						<!-- for aadhar upload -->
+						<div class="img_box">
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="aadhar_url">
+								</div>
+							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg,.pdf" #aadhar
+									(change)="onaadhar(aadhar.files)">
+								<button (click)="aadhar.click()">
+									Upload Addhar
+								</button>
+							</div>
+
+						</div>
+
+
+						<!-- for markseet upload -->
+						<div class="img_box">
+							<div class="img_area">
+								<div class="image-preview">
+									<img alt="prescription_image" [src]="markseet_url">
+								</div>
+							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".jpg,.png,.jpeg,.pdf" #markseet
+									(change)="onmarkseet(markseet.files)">
+								<button (click)="markseet.click()">
+									Upload 10th Markseet
+								</button>
+							</div>
+						</div>
+
+						<!-- for certificate upload -->
+						<div class="img_box">
+							<div class="img_area">
+								<div class="image-preview">
+									<a href="{{certificate_url}}"><img alt="prescription_image"
+											src="assets/pdf_icon.png"></a>
+								</div>
+							</div>
+
+							<div class="upload_type">
+								<input class="d-none" type="file" accept=".pdf," #certificate
+									(change)="oncertificate(certificate.files)">
+								<button (click)="certificate.click()">
+									Upload Certificate
+								</button>
+							</div>
+
+						</div>
+
+					</div>
+				</form>
+				<br>
+				<br>
+				<br>
+				<div mat-dialog-action [align]="'end'" id="main_button">
+					<button mat-raised-button class="add_btn" type="submit"
+						style="background-color: #1d1f23; color: white;" (click)="document_submit()">Final
+						Submit</button>
+				</div>
+			</div>
+		</ng-template>
+	</ng-container>
+	<!-- /////////////////////////////////////// for Upload Document Form Ending Here ////////////////////////////////// -->
+</nav>
+<div [ngbNavOutlet]="nav" class="mt-2"></div>

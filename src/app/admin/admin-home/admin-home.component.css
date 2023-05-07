@@ -1,0 +1,53 @@
+/******************** css for home layout start **********************/
+.name_text {
+    color: rgb(232, 232, 232);
+    font-size: 16px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+mat-sidenav {
+    width: 250px;
+    background-color: #1d1f23;
+}
+
+mat-sidenav-container {
+    height: 100vh;
+    background-color: whitesmoke;
+}
+
+mat-toolbar {
+    height: 60px;
+    justify-content: space-between;
+    background-color: #1d1f23;
+    position: sticky;
+    top: 0px;
+    z-index: 3;
+}
+
+#logo_panel {
+    background-color: transparent;
+    position: relative;
+    left: 5px;
+    border: none;
+}
+
+.main {
+    padding: 2px;
+}
+
+mat-icon {
+    font-size: 28px;
+    cursor: pointer;
+    color: whitesmoke;
+}
+
+@media(max-width:768px) {
+
+    mat-sidenav {
+        width: 200px;
+        background-color: #1d1f23;
+    }
+    .name_text{
+        display: none;
+    }
+}

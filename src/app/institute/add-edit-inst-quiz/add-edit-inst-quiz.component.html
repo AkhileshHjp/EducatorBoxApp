@@ -1,0 +1,59 @@
+<mat-toolbar>
+    <span>Add Question</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="quiz_form">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Question</mat-label>
+            <input matInput formControlName="quiz_question" placeholder="Enter question">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Option A</mat-label>
+            <input matInput formControlName="quiz_option_a" placeholder="Enter option a">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Option B</mat-label>
+            <input matInput formControlName="quiz_option_b" placeholder="Enter option b">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Option C</mat-label>
+            <input matInput formControlName="quiz_option_c" placeholder="Enter option c">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Option D</mat-label>
+            <input matInput formControlName="quiz_option_d" placeholder="Enter option d">
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Answer</mat-label>
+            <mat-select formControlName="quiz_answer">
+                <mat-option value="A">A</mat-option>
+                <mat-option value="B">B</mat-option>
+                <mat-option value="C">C</mat-option>
+                <mat-option value="D">D</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="quiz_description" placeholder="Enter description"></textarea>
+        </mat-form-field>
+
+        <input type="number" placeholder="course_no " formControlName="course_id_fk" readonly hidden>
+        <input type="number" [ngModel]="admin" formControlName="admin_id_fk" readonly hidden>
+        <input type="number" placeholder="quiz no" formControlName="quiz_no" readonly hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="quiz_data_reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="quiz_btn()"
+                [disabled]="!quiz_form.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

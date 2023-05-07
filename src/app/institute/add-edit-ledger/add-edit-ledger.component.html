@@ -1,0 +1,52 @@
+<mat-toolbar>
+    <span>Add Ledger</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="Ledger_Form">
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Cash In Hand</mat-label>
+            <input formControlName="ledger_cash_in_hand" matInput type="number" placeholder="Cash In Hand" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Deposit into Bank</mat-label>
+            <input formControlName="ledger_deposit_bank" matInput type="number" placeholder="Deposit into Bank"
+                (keyup)="disp_in_bank()">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Today Recived</mat-label>
+            <input formControlName="ledger_today_Recived" matInput placeholder="Today Recived" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label>Closing Amount</mat-label>
+            <input formControlName="ledger_closing_amount" matInput type="number" readonly
+                placeholder="Enter closing amount">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" floatLabel="always">
+            <mat-label> Today Expence</mat-label>
+            <input formControlName="ledger_expence" matInput type="number" readonly placeholder="Enter total expence">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label> Date</mat-label>
+            <input type="date" class="boxdate" matInput formControlName="ledger_date" (change)="CurDate($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Description</mat-label>
+            <textarea formControlName="ledger_description" matInput placeholder="Enter description"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number" [ngModel]="profit_loss" formControlName="profit_loss" readonly hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="ledger_form_reset()">Reset</button>&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="addBtn()">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

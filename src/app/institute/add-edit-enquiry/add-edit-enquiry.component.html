@@ -1,0 +1,64 @@
+<mat-toolbar>
+    <span>{{enquiry_heading}}</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="enquiry_form">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="std_name" placeholder="Enter name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Father Name</mat-label>
+            <input matInput formControlName="std_father_name" placeholder="Enter father name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>WhatsApp No</mat-label>
+            <input formControlName="std_whatsapp_no" matInput type="number" onkeypress=" return this.value.length < 10"
+                oninput="if(this.value.length>=10) {this.value = this.value.sclice (0,10);}"
+                placeholder="Enter whatsapp no">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course_id_fk">
+                <mat-option *ngFor="let course of course_data"
+                    [value]="course.course_id">{{course.course_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Date</mat-label>
+            <input type="date" class="boxdate" max="5050-01-01" matInput formControlName="std_regist_date">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Gender : </mat-label>
+            <mat-select formControlName="std_gender" [ngModel]="autoselect">
+                <mat-option value="Male">Male</mat-option>
+                <mat-option value="Female">Female</mat-option>
+                <mat-option value="Other">Other</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="std_address" placeholder="Enter address"></textarea>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput formControlName="remarks" placeholder="enter remarks"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="enquiry_data_reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="enquiry_btn()"
+                [disabled]="!enquiry_form.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

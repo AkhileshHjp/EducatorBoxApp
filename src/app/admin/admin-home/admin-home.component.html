@@ -1,0 +1,27 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidebar mode="side" [(opened)]="opened">
+        <app-admin-sidebar></app-admin-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <div class="toolbar">
+                <mat-toolbar>
+                    <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+                    <span class="example-spacer"></span>
+                    <div class="name_text">
+                        Login as : &nbsp;{{ name | titlecase}}
+                    </div>&nbsp;
+                    <button id="logo_panel" [matMenuTriggerFor]="menu">
+                        <img src="assets/profile.jpg" width="50" height="50" style="border-radius:100%;">
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="action_btn" [routerLink]="['/adminlogin']">LogOut</button>
+                    </mat-menu>
+                </mat-toolbar>
+            </div>
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

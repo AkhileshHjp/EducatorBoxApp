@@ -1,0 +1,68 @@
+#wrapper {
+    width: 300px;
+    padding-top: 18px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+mat-toolbar {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(0 0 0 / 4%);
+}
+
+::ng-deep .mat-dialog-container {
+    width: auto !important;
+    padding: 0px !important;
+    background-color: whitesmoke;
+}
+
+mat-form-field {
+    margin-left: 19px;
+    padding: 0px;
+    width: calc(100% - 12.5%)
+}
+
+.description {
+    width: calc(100% - 39px);
+}
+
+.submit {
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+@media (min-width:1200px) {}
+
+@media(min-width:990px) and (max-width:1200px) {}
+
+@media(min-width:768px) and (max-width:990px) {}
+
+@media(max-width:768px) {
+    #wrapper {
+        width: 100% !important;
+        overflow-y: scroll;
+    }
+
+    mat-toolbar {
+        width: 100% !important;
+    }
+
+    mat-form-field {
+        width: calc(100% - 38px) !important;
+        height: auto;
+        position: relative;
+        left: 2px;
+        right: 5px;
+    }
+}

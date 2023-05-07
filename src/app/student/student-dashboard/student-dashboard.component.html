@@ -1,0 +1,32 @@
+<div id="thumbnail">
+    <div class="thumbnail_box" routerLink="/studenthome/course">
+        <mat-icon>school</mat-icon>
+        <b>{{course_count}}</b>
+        <span>Total Coures</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/studenthome/batch">
+        <mat-icon>local_library</mat-icon>
+        <b>{{batch_count}}</b>
+        <span>Batch</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/studenthome/takeaddmission">
+        <mat-icon>transfer_within_a_station</mat-icon>
+        <b>{{admission_count}}</b>
+        <span>Take Admission</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/studenthome/paymentreceived">
+        <mat-icon>library_books</mat-icon>
+        <b>₹ &nbsp;{{fee_count |currency:'' + ' ' }}</b>
+        <span>Fee Paid</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/studenthome/dues">
+        <mat-icon>airline_seat_recline_normal</mat-icon>
+        <b>₹ &nbsp;{{dues_count |currency:'' + ' ' }}</b>
+        <span>Dues</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/studenthome/query">
+        <mat-icon>airline_seat_recline_normal</mat-icon>
+        <b>{{query_count}}</b>
+        <span>Query</span>
+    </div>
+</div>

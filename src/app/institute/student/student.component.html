@@ -1,0 +1,96 @@
+<div class="head">
+  <span>Registration Details</span>
+  <mat-icon class="add_mat_icon" (click)="add_student()">add_circle</mat-icon>
+</div>
+<div class="count_area">
+  <span class="notice_text">
+    <b (click)="onTotal()" style="cursor:pointer">Total : {{count_student}} </b>
+    &nbsp;<b (click)="onActive()" style="color: green; cursor: pointer;">Active : {{count_active}} </b>
+    &nbsp;<b (click)="onPending()" style="color: red; cursor: pointer;">Inactive : {{count_pending}}</b>
+    &nbsp;<b (click)="onPendingAcmission()" style="color: olive; cursor: pointer;">Admission N/A : {{pending_admission}}</b>
+  </span>
+  <div class="search">
+    <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="std_id">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+      <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_regist_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Registration Number</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_regist_no}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.std_name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_whatsapp_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Mobile Number</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_whatsapp_no}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_aadhar">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Aadhar Number</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_aadhar}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_email">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Email-ID </th>
+      <td mat-cell *matCellDef="let row"> {{row.std_email}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_photo">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Photo </th>
+      <td mat-cell *matCellDef="let row"> <img [hidden]="row.std_img == null" src="{{imgUrl}}{{row.std_img}}"
+          width="60px" height="60px" alt="image" style="border-radius: 50px;">
+        <img [hidden]="row.std_img != null" src="{{imgUrl}}profile.jpg" width="60px" height="60px" alt="image"
+          style="border-radius: 50px;">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_regist_date">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
+      <td mat-cell *matCellDef="let row"> {{row.std_regist_date | date: 'dd-MM-yyyy'}} </td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+      <td mat-cell *matCellDef="let row">
+        <p [hidden]="row.status ==1"> <b style="color: red;">Inactive</b></p>
+        <p [hidden]="row.status ==0"> <b style="color: green;">Active</b></p>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <button mat-icon-button [hidden]="row.status == 0" (click)="edit_student(row)"><mat-icon
+            title="update">edit</mat-icon> </button>
+        <button mat-icon-button [hidden]="row.status == 0" (click)="convertoadmission(row)"><mat-icon
+            title="convert to admission"
+            [ngClass]="(row.total_admission==0)?red:green">assignment_ind</mat-icon></button><span
+          class="total_admission" [hidden]="row.status == 0"><b>{{row.total_admission}}</b></span>
+        <button mat-icon-button [hidden]="row.std_regist_no" (click)="ondeletedstd(row.std_id)"><mat-icon
+            title="delete">deleted</mat-icon></button>
+        <mat-slide-toggle [color]="color" [checked]="row.status ==1" (change)="toggle($event, row)"></mat-slide-toggle>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" id="thead"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="thead"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="10" style="color:silver;">No record found"{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator #paginatorRef [pageSizeOptions]="[5, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

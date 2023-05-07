@@ -1,0 +1,52 @@
+
+<div id="wrapper">
+    <div id="login_header">
+        <h2>Educator Box</h2>
+        <button mat-button mat-raised-button color="primary" [matMenuTriggerFor]="menu">Login</button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item class="action_btn" routerLink="/institutelogin">Institute</button>
+            <button mat-menu-item class="action_btn" routerLink="/studentlogin">Student</button>
+            <button mat-menu-item class="action_btn" routerLink="/employeelogin">Employee</button>
+        </mat-menu>
+    </div>
+    <div id="login_main">
+        <br><br>
+        <div id="login_box">
+            <h2>Admin Login</h2>
+            <img src="assets/login.png" alt="login" width="100" height="100"><br>
+            <form [formGroup]="loginForm">
+                <div class="txt_box_with_icon">
+                    <mat-icon>account_circle</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Username</mat-label>
+                        <input matInput placeholder="Enter your E-mail" formControlName="username">
+                    </mat-form-field>
+                </div>
+                <br>
+                <div class="txt_box_with_icon">
+                    <mat-icon>lock</mat-icon>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Password</mat-label>
+                        <input (keyup.enter)="admin_login()" matInput [type]="hide ? 'password' : 'text'"
+                            placeholder="Enter your password" formControlName="password"
+                            onkeypress=" return this.value.length < 20">
+                        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                            [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                    </mat-form-field>
+                </div>
+            </form><br>
+            <!-- <span (click)="forgot_password()">Forgot Password ?</span><br> -->
+            <button mat-button mat-raised-button color="primary" (click)="admin_login()">
+                Login Now
+            </button>
+            <!-- Create a new account?<br>
+            <b (click)="new_account()">Click Here</b> -->
+        </div>
+    </div>
+    <div id="login_footer">
+        <span>Powered By : <a href="https://www.greensoft.net.in/">Green Soft</a></span>
+        <span>Version 1.0</span>
+    </div>
+</div>

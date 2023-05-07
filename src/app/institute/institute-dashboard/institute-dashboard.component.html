@@ -1,0 +1,62 @@
+<div id="thumbnail">
+    <div class="thumbnail_box" routerLink="/institutehome/course">
+        <mat-icon>school</mat-icon>
+        <b>{{course_count}}</b>
+        <span>Coures</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/batch">
+        <mat-icon>local_library</mat-icon>
+        <b>{{batch_count}}</b>
+        <span>Batch</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/enquiry">
+        <mat-icon>transfer_within_a_station</mat-icon>
+        <b>{{enquiry_count}}</b>
+        <span>Enquiry</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/student">
+        <mat-icon>library_books</mat-icon>
+        <b>{{student_count}}</b>
+        <span>Registration</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/admission">
+        <mat-icon>airline_seat_recline_normal</mat-icon>
+        <b>{{admission_count}}</b>
+        <span>Admission</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/fee">
+        <mat-icon>payment</mat-icon>
+        <b>₹ &nbsp;{{fee_count |currency:'' + ' ' }}</b>
+        <span>Fee collected in {{Month | date : 'MMMM' | titlecase}}</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/dues">
+        <mat-icon>account_balance_wallet</mat-icon>
+        <b>₹ &nbsp;{{dues_count |currency:'' + ' ' }}</b>
+        <span>Dues</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/expence">
+        <mat-icon>explicit</mat-icon>
+        <b>₹ &nbsp;{{expence_count |currency:'' + ' ' }}</b>
+        <span>Expense in {{Month | date : 'MMMM' | titlecase}}</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/ledger">
+        <mat-icon>book</mat-icon>
+        <b>₹ &nbsp;{{ledger_count |currency:'' + ' ' }}</b>
+        <span>Cash in hand</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/profitloss">
+        <mat-icon>book</mat-icon>
+        <b>₹ &nbsp;{{profit_loss |currency:'' + ' ' }}</b>
+        <span>P/L Account in {{Month | date : 'MMMM' | titlecase}}</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/instquery">
+        <mat-icon>equalizer</mat-icon>
+        <b>{{query_count}}</b>
+        <span>Pending Query</span>
+    </div>
+    <div class="thumbnail_box" routerLink="/institutehome/certificate">
+        <mat-icon>file_copy</mat-icon>
+        <b>{{issue_certificate}}</b>
+        <span>Issue cerificate</span>
+    </div>
+</div>

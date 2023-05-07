@@ -1,0 +1,55 @@
+<mat-toolbar>
+    <span>Forgot Password</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<div id="wrapper">
+    <form [formGroup]="ForgotPassword">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Enter your email</mat-label>
+            <input matInput placeholder="Enter email" formControlName="std_email" [readonly]="disable_box">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Aadhar No</mat-label>
+            <input matInput placeholder="Enter aadhar no" formControlName="std_aadhar" [readonly]="disable_box">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>DOB</mat-label>
+            <input matInput max="5050-01-01" type="date" formControlName="std_dob" [readonly]="disable_box">
+        </mat-form-field>
+
+        <div class="pwd_forgot">
+            <button [disabled]="disable_box" mat-raised-button color="primary" [disabled]="!ForgotPassword.valid"
+                (click)="onreset()">Reset</button>
+        </div>
+
+        <mat-form-field class="example-full-width" appearance="fill" [hidden]="otpaction">
+            <mat-label>Enter OTP</mat-label>
+            <input matInput placeholder="Enter email OTP" formControlName="otp_recive">
+        </mat-form-field><br [hidden]="otpaction">
+
+        <!-- for verify email otp -->
+        <div class="pwd_forgot" [hidden]="otpaction">
+            <button (click)="onreset()" mat-raised-button color="primary">Resend</button> &nbsp; &nbsp;
+            <button (click)="verifyotp()" mat-raised-button color="primary">Verify</button>
+        </div><br [hidden]="otpaction">
+
+        <!-- for student new password  -->
+        <mat-form-field class="example-full-width" appearance="fill" [hidden]="passwordbox">
+            <mat-label>Enter New Password</mat-label>
+            <input matInput placeholder="Enter OTP" [type]="hide ? 'password' : 'text'" formControlName="std_password"
+                onkeypress=" return this.value.length < 12">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field><br [hidden]="passwordbox">
+
+        <!-- for final password change submit -->
+        <div class="pwd_forgot" [hidden]="passwordbox">
+            <button mat-raised-button color="primary" (click)="chnagepass()">Submit</button>
+        </div>
+    </form>

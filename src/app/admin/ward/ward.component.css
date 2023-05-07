@@ -1,0 +1,49 @@
+/* for table starting always */
+table {
+    width: 100%;
+  }
+  
+  th.mat-header-cell {
+    color: rgb(255, 255, 255);
+    background-color: #1d1f23;
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 0px 10px !important;
+  }
+  
+  td.mat-cell {
+    padding: 0px 10px !important;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+  }
+  
+  tr:hover {
+    background-color: #494949;
+    color: rgb(253, 253, 253);
+  }
+  
+  .mat-row:hover>.mat-cell {
+    color: white;
+  }
+  
+  .mat-elevation-z8 {
+    overflow: auto;
+  }
+  
+  #thead {
+    height: 45px;
+  }
+  
+  @media (min-width:1200px) {}
+  
+  @media(min-width:990px) and (max-width:1200px) {}
+  
+  @media(min-width:768px) and (max-width:990px) {}
+  
+  @media(min-width:420px) and (max-width:768px) {}
+  
+  @media(max-width:420px) {}

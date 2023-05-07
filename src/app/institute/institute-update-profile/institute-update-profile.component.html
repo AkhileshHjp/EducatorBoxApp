@@ -1,0 +1,110 @@
+<mat-toolbar>
+    <span>{{instupdate}}</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+
+<div id="wrapper">
+    <form [formGroup]="InstForm">
+
+        <div class="user_image" (click)="logo.click()">
+            <img alt="Logo" [src]="logo_url">
+            <input class="d-none" type="file" accept=".jpg,.png,.jpeg," #logo (change)="onlogo(logo.files)">
+        </div>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="inst_name" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Owner Name</mat-label>
+            <input matInput formControlName="inst_owner_name" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Whatsapp Number</mat-label>
+            <input matInput type="number" formControlName="inst_whatsapp_no" onkeypress="return this.value.length < 10;"
+                oninput="if(this.value.length>=10) { this.value = this.value.slice(0,10); }" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput formControlName="inst_email" readonly>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Center Code</mat-label>
+            <input matInput formControlName="center_code" placeholder="Center code">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Country</mat-label>
+            <mat-select formControlName="inst_country" (valueChange)="get_state($event)">
+                <mat-option *ngFor="let country of country_data"
+                    [value]="country.country_name">{{country.country_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>State</mat-label>
+            <mat-select formControlName="inst_state" (valueChange)="get_district($event)">
+                <mat-option *ngFor="let state of state_data"
+                    [value]="state.state_name">{{state.state_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="margin_top">
+            <mat-label>District</mat-label>
+            <mat-select formControlName="inst_district">
+                <mat-option *ngFor="let district of district_data"
+                    [value]="district.district_name">{{district.district_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Account Number</mat-label>
+            <input matInput type="number" formControlName="account_no" onkeypress=" return this.value.length < 18"
+                placeholder="Enter account number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>IFSC</mat-label>
+            <input matInput ype="number" formControlName="inst_ifsc" placeholder="Enter IFSC">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Account Holder Name</mat-label>
+            <input matInput formControlName="account_holder" placeholder="Enter account holder name">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Document type</mat-label>
+            <mat-select disableRipple formControlName="inst_doct">
+                <mat-option value="Aadhar">Aadhar</mat-option>
+                <mat-option value="Pan Card">Pan Card</mat-option>
+                <mat-option value="Driving Licence">Driving Licence</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <input class="doc_textbox" type="file" accept=".pdf," #document (change)="ondocument(document.files)">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Document Number</mat-label>
+            <input matInput formControlName="inst_doct_number" onkeypress=" return this.value.length < 12"
+                placeholder="Enter document number">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="inst_address" placeholder="Enter address" id="address"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+        <input type="number" readonly formControlName="inst_id" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="primary" (click)="update_profile()"
+                [disabled]="!InstForm.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

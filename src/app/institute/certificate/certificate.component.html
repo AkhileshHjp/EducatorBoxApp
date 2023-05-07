@@ -1,0 +1,93 @@
+<div class="head">
+  <span class="course_text">Certificate Details</span>
+  <mat-icon class="add_mat_icon" [routerLink]="['../add_edit_certificate']">add_circle</mat-icon>
+</div>
+<div class="count_area">
+  <span class="notice_text">Total : {{cer_count}}</span>
+  <div class="search">
+    <input type="text" placeholder="Search" id="search_box" matInput (keyup)="applyFilter($event)" #input>
+  </div>
+</div>
+
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort>
+
+    <ng-container matColumnDef="no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+      <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex * paginatorRef.pageSize)+(i+1)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.std_name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_father_name">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Father Name </th>
+      <td mat-cell *matCellDef="let row"> {{row.std_father_name}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_contact_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Mobile Number</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_contact_no}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_village">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Village</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_village}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_rigistration_no">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Certificate Number</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_certificate_no}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_center_code">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Center Code</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_center_code}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_total_marks">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Total Marks</th>
+      <td mat-cell *matCellDef="let row"> {{row.std_total_marks}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="course_id_fk">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Course</th>
+      <td mat-cell *matCellDef="let row"> {{row.course_id_fk}}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="std_image">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header>Photo</th>
+      <td mat-cell *matCellDef="let row"> <img [hidden]="row.std_image == null" src="{{imgUrl}}/{{row.std_image}}"
+          width="60px" height="60px" alt="image" style="border-radius: 50px;">
+        <img [hidden]="row.std_image != null" src="{{imgUrl}}profile.jpg" width="60px" height="60px" alt="image"
+          style="border-radius: 50px;">
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+      <td mat-cell *matCellDef="let row">
+        <mat-icon (click)="certificate_edit(row.certificate_id)" [hidden]="row.status == 1 "
+          title="Drafts">description</mat-icon>
+        <mat-icon (click)="certificate_edit(row.certificate_id)" [hidden]="row.status == 0 "
+          title="View">visibility</mat-icon>
+        &nbsp;
+        <mat-icon (click)="certificate_edit(row.certificate_id)" title="Edit">edit</mat-icon>
+        &nbsp;
+        <mat-icon (click)="certificate_delete(row)" title="Delete">delete</mat-icon>
+      </td>
+
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="displayedColumns" id="thead"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="thead"></tr>
+
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="11" style="color:silver;">No record found"{{input.value}}"</td>
+    </tr>
+  </table>
+
+  <mat-paginator #paginatorRef [pageSizeOptions]="[5, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

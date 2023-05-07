@@ -1,0 +1,99 @@
+/* for sidebar scrollbar in all */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+    background-color: #cac7c7;
+    color: black;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 50px;
+    background-color: rgb(110, 110, 110);
+}
+
+/* for mat menu  */
+.mat-menu-content:not(:empty) {
+    background-color: #1d1f23;
+    width: 150px;
+    color: black;
+}
+
+mat-icon {
+    cursor: pointer;
+}
+
+.mat-menu-panel {
+    margin-top:18px;
+}
+
+.action_btn {
+    color: whitesmoke;
+    background-color: #1d1f23;
+}
+
+.action_btn:hover {
+    background-color: #3f50b5 !important;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.boxdate {
+    height: 13px;
+}
+
+/* for details head */
+.head {
+    height: 40px;
+    width: 100%;
+    background-color: #1d1f23;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* for count area */
+.count_area {
+    height: auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 5px 2px 5px;
+    box-sizing: border-box;
+    color: #1d1f23;
+    flex-wrap: wrap;
+    justify-items: center;
+}
+
+/* for search box */
+#search_box {
+    border: none;
+    border-bottom: 1px solid #1d1f23;
+    outline: none;
+    padding: 5px 0px;
+    background-color: whitesmoke;
+}
+
+#search_box:hover::placeholder {
+    color: #1d1f23;
+}
+
+.mat-paginator-container {
+    background: whitesmoke;
+}
+
+/* for media queary starting here */
+
+@media(max-width:768px) {
+    .all_dialog .mat-dialog-container {
+        width: calc(100vw - 40px);
+        height: auto;
+        position:fixed;
+        top: 120px;
+        left: 20px;
+        right: 20px;
+    }
+}

@@ -1,0 +1,63 @@
+<mat-toolbar>
+    <span>{{batch_heading}}</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="batch_form">
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course_id_fk">
+                <mat-option *ngFor="let course of course_data"
+                    [value]="course.course_id">{{course.course_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="batch_name" placeholder="Enter batch name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Arrival</mat-label>
+            <input type="time" class="boxdate" matInput formControlName="batch_arrival">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Departure</mat-label>
+            <input type="time" class="boxdate" matInput formControlName="batch_departure">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="example-full-width">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="batch_status" [ngModel]="autoselect">
+                <mat-option value="Yet to start">Yet to start</mat-option>
+                <mat-option value="Running">Running</mat-option>
+                <mat-option value="Completed">Completed</mat-option>
+                <mat-option value="Inactive">Inactive</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Status Date</mat-label>
+            <input type="date" class="boxdate" max="5050-01-01" matInput formControlName="batch_date">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="description">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="batch_description" placeholder="Enter description"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <mat-form-field class="example-full-width" appearance="fill" hidden>
+            <mat-label>Institute Id</mat-label>
+            <input matInput [ngModel]="institute_id" formControlName="institute_id_fk">
+        </mat-form-field>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="batch_data_reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="batch_btn()"
+                [disabled]="!this.batch_form.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

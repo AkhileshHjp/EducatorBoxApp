@@ -1,0 +1,185 @@
+/* for toggale button on time coolor change  */
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+    background-color: #075e2e;
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+    background-color: #012307;
+}
+
+.count_area_fee {
+    height: auto;
+    width: 100%;
+    padding: 5px 5px 5px 0px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+mat-form-field {
+    height: 50px;
+    margin: 0px 5px;
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.search_box {
+    border: none;
+    width: 200px;
+    border-bottom: 1px solid #1d1f23;
+    outline: none;
+    padding: 5px 5px;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+    position: relative;
+    top: 12px;
+}
+.search_box_std {
+    border: none;
+    width: 200px;
+    border-bottom: 1px solid #1d1f23;
+    outline: none;
+    padding: 5px 5px;
+    background-color: whitesmoke;
+    box-sizing: border-box;
+}
+
+.search_box:hover::placeholder {
+    color: #1d1f23;
+}
+
+/* for table starting always */
+table {
+    width: 100%;
+}
+
+th.mat-header-cell {
+    color: rgb(255, 255, 255);
+    background-color: #1d1f23;
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 0px 10px !important;
+}
+
+td.mat-cell {
+    padding: 0px 10px !important;
+    white-space: nowrap;
+    font-size: 13px;
+}
+
+tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+}
+
+tr:hover {
+    background-color: #494949;
+    color: rgb(253, 253, 253);
+}
+
+.mat-row:hover>.mat-cell {
+    color: white;
+}
+
+.mat-elevation-z8 {
+    overflow: auto;
+    height:340px;
+}
+
+#thead {
+    height: 45px;
+}
+
+.mat-paginator-container {
+    background: whitesmoke;
+}
+
+#status_bar{
+    width: 100%;
+    height: auto;
+    background-color:#1d1f23;
+    position: relative;
+    bottom: 3px;
+    display: flex;
+    justify-content: space-evenly;
+    color: whitesmoke;
+    font-size: 12px;
+    line-height: 40px;
+    flex-wrap: wrap;
+
+}
+
+@media (min-width:1366px) {}
+
+@media(min-width:991px) and (max-width:1366px) {
+    .count_area_fee {
+        align-items: center;
+        gap: 5px;
+    }
+
+    .search_box {
+        top: 0px;
+        width: 100%;
+    }
+
+    .count_area_fee>div {
+        display: flex;
+        width: calc(50% - 47px);
+        gap: 5px;
+        padding-left: 2px;
+    }
+
+    .count_area_fee>div>mat-form-field {
+        width: calc(50% - 2px);
+        margin: 0px;
+        padding: 0px;
+    }
+}
+
+@media(min-width:768px) and (max-width:991px) {
+    .count_area_fee {
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+
+    .count_area_fee>div {
+        width: 100%;
+        display: flex;
+        flex: 1 1;
+    }
+
+    .count_area_fee mat-form-field {
+        width: 50%;
+    }
+
+    .search_box {
+        top: 0px;
+        width: 100%;
+    }
+}
+
+@media(max-width:768px) {
+    .count_area_fee {
+        flex-direction: column;
+        align-items: start;
+        gap: 5px;
+    }
+
+    .count_area_fee>div {
+        width: calc(100% - 25px);
+        display: flex;
+        flex: 1 1;
+        gap: 5px;
+    }
+
+    .count_area_fee mat-form-field {
+        width: 50%;
+    }
+
+    .search_box {
+        top: 0px;
+        width: 100%;
+    }
+}

@@ -1,0 +1,115 @@
+<div class="head">
+    <span class="enquiry_text">Expense Details</span>
+    <mat-icon (click)="add_expense()" class="add_mat_icon">add_circle</mat-icon>
+
+</div>
+<div class="count_area_expense">
+    <span class="notice_text">Total : {{expence_count}}</span>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Year</mat-label>
+            <mat-select (valueChange)="onyear($event)" [value]="cur_year">
+                <mat-option value="2017">2017</mat-option>
+                <mat-option value="2018">2018</mat-option>
+                <mat-option value="2019">2019</mat-option>
+                <mat-option value="2020">2020</mat-option>
+                <mat-option value="2021">2021</mat-option>
+                <mat-option value="2022">2022</mat-option>
+                <mat-option value="2023">2023</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+            <mat-label>Month</mat-label>
+            <mat-select (valueChange)="onmonth($event)" [value]="monthselect">
+                <mat-option value="all">All</mat-option>
+                <mat-option value="01">January</mat-option>
+                <mat-option value="02">February</mat-option>
+                <mat-option value="03">March</mat-option>
+                <mat-option value="04">April</mat-option>
+                <mat-option value="05">May</mat-option>
+                <mat-option value="06">June</mat-option>
+                <mat-option value="07">July</mat-option>
+                <mat-option value="08">August</mat-option>
+                <mat-option value="09">September</mat-option>
+                <mat-option value="10">October</mat-option>
+                <mat-option value="11">November</mat-option>
+                <mat-option value="12">December</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>From</mat-label>
+            <input type="date" matInput class="boxdate" (change)="fromdate($event)">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>To</mat-label>
+            <input type="date" matInput class="boxdate" (change)="todate($event)" [readonly]="onfrom">
+        </mat-form-field>
+    </div>
+    <span class="example-spacer"></span>
+    <input type="text" class="search_box" placeholder="Search" matInput (keyup)="applyFilter($event)" #input>
+</div>
+
+<!-- for description table -->
+
+<div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+
+        <ng-container matColumnDef="slno">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> S.N. </th>
+            <td mat-cell *matCellDef="let row; let i = index">{{(paginatorRef.pageIndex *
+                paginatorRef.pageSize)+(i+1)}}
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_type">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Expense Type</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_type}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_amount">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Amount</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_amount | currency:'INR':true}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_pay_to">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Pay to</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_pay_to}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_mobile">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Contact</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_mobile}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_date">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Date</th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_date | date: 'dd-MM-yyyy'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="expense_desc">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Description </th>
+            <td class="data" mat-cell *matCellDef="let row">{{row.expense_desc}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th class="trth" mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td class="data" mat-cell *matCellDef="let row">
+                <mat-icon (click)="edit_expense(row)">visibility</mat-icon>
+                <mat-icon (click)="expence_delete(row)" [hidden]="row.ledger_id != null"
+                    title="delete">delete</mat-icon>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns" id="thead"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;" id="thead"></tr>
+
+        <tr class="mat-row" *matNoDataRow>
+            <td class="mat-cell" colspan="9" style="color:silver;">No record found"{{input.value}}"</td>
+        </tr>
+    </table>
+
+    <mat-paginator #paginatorRef [pageSizeOptions]="[10, 25, 100]" aria-label="Select page of users"></mat-paginator>
+</div>

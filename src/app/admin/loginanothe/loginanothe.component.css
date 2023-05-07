@@ -1,0 +1,16 @@
+button {
+    margin-right: 8px;
+  }
+  #wrapper{
+    width: 200px;
+    height: 100px;
+  }
+  h3{
+    text-align: center;
+  }
+  #button_delete{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }

@@ -1,0 +1,34 @@
+<mat-sidenav-container>
+    <mat-sidenav #sidebar mode="side" [opened]="action_menu">
+        <app-student-sidebar></app-student-sidebar>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="content">
+            <div class="toolbar">
+                <mat-toolbar>
+                    <mat-icon (click)="sidebar.toggle()">menu</mat-icon>
+                    <marquee style="color:white; width:75%; font-size: 14px; margin-left: 15px; margin-top: 30px;">
+                        <span *ngFor="let notifi of custtomize_noti"> {{notifi.notification}}</span>
+                    </marquee>
+                    <span class="example-spacer"></span>
+                    <div class="name_text">
+                        Login as : &nbsp;{{ name | titlecase}}
+                    </div>&nbsp;
+                    <button id="logo_panel" [matMenuTriggerFor]="menu">
+                        <img src={{url}}{{img_url}} width="50" height="50" style="border-radius:100%; background-color:white;">
+                    </button>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item class="action_btn" (click)="show_profile()">Update Profile</button>
+                        <button mat-menu-item class="action_btn">I-Card</button>
+                        <button mat-menu-item class="action_btn" (click)="changepassword()">Change
+                            Password</button>
+                        <button mat-menu-item class="action_btn" [routerLink]="['/studentlogin']">Logout</button>
+                    </mat-menu>
+                </mat-toolbar>
+            </div>
+            <div class="main">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

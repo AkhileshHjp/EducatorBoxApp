@@ -1,0 +1,41 @@
+<mat-toolbar class="add_form_title">
+    <span class="example-spacer">Add Syllabus</span>
+    <mat-icon mat-dialog-close class="close-mat-icon">cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="inst_syllabus_form">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Course</mat-label>
+            <mat-select formControlName="course_id_fk">
+                <mat-option *ngFor="let course of course_data"
+                    [value]="course.course_id">{{course.course_name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <div class="user_image">
+            <button (click)="image.click()">
+                <img alt="image" [src]="image_url">
+                Uplodad PDF
+                <input class="d-none" type="file" accept=".jpg,.png,.jpeg," accept=".pdf, .png" #image
+                    (change)="OnUpload(image.files)">
+            </button>
+        </div><br>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Syllabus Title</mat-label>
+            <input matInput formControlName="inst_syllabus_title" placeholder="Enter syllabus title">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Description</mat-label>
+            <input matInput formControlName="inst_syllabus_description" placeholder="Enter description">
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="primary" (click)="inst_syllabus_btn()">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

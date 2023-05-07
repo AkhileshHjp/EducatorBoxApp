@@ -1,0 +1,83 @@
+<div class="sidebar">
+    <div class="top_head">
+        <span class="title_text">Admin</span>
+    </div>
+    <div class="menu">
+        <div [ngClass]="'menu_item'">
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['dashboard']">
+                <mat-icon>dashboard</mat-icon>
+                <span>Dashboard</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['homeenquiry']">
+                <mat-icon>transfer_within_a_station</mat-icon>
+                <span>Enquiry</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['institute']">
+                <mat-icon>business</mat-icon>
+                <span>Institute</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['inscourse']">
+                <mat-icon>school</mat-icon>
+                <span>Course</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['insbatch']">
+                <mat-icon>local_library</mat-icon>
+                <span>Batch</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['insstudent']">
+                <mat-icon>library_books</mat-icon>
+                <span>Student</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['insadmission']">
+                <mat-icon>airline_seat_recline_normal</mat-icon>
+                <span>Admission</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['insdues']">
+                <mat-icon>redeem</mat-icon>
+                <span>Dues</span>
+            </button>
+            <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['inspayment']">
+                <mat-icon>payment</mat-icon>
+                <span>Received</span>
+            </button>
+            
+            <div>
+                <button mat-button class="menu-button" (click)="address_dropdown()">
+                    <mat-icon>list_alt</mat-icon>
+                    <span>Address</span>
+                    <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                    <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+                </button>
+                <div id="dropdown_address">
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['country']">
+                        <mat-icon> language</mat-icon>
+                        <span>Country</span>
+                    </button>
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['state']">
+                        <mat-icon>room</mat-icon>
+                        <span>State</span>
+                    </button>
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['district']">
+                        <mat-icon>map</mat-icon>
+                        <span>District</span>
+                    </button>
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['block']">
+                        <mat-icon>room</mat-icon>
+                        <span>Block</span>
+                    </button>
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['panchayat']">
+                        <mat-icon>gps_fixed</mat-icon>
+                        <span>Panchayat</span>
+                    </button>
+                    <button mat-button class="master_icon" routerLinkActive="active" [routerLink]="['ward']">
+                        <mat-icon>room</mat-icon>
+                        <span>Ward</span>
+                    </button>
+                </div>
+                <button mat-button class="menu-button" routerLinkActive="active" [routerLink]="['terms']">
+                    <mat-icon>description</mat-icon>
+                    <span>Term & Condition</span>
+                </button>
+            </div>
+        </div>
+    </div>

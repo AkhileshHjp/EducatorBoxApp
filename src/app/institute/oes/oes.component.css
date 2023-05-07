@@ -1,0 +1,22 @@
+.wrapper {
+    width: 100%;
+    height: calc(100vh - 69px);
+    display: flex;
+    justify-content: center;
+    background-color: #ee5035;
+}
+
+@media (max-width:768px) and (min-width:420px) {
+    img{
+        width: 320px;
+        height: 320px;
+        margin-top: 100px;
+    }
+}
+@media (max-width:420px) {
+    img{
+        width: 160px;
+        height: 160px;
+        margin-top: 100px;
+    }
+}

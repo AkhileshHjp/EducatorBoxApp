@@ -1,0 +1,19 @@
+#wrapper{
+    width:200px;
+    height:350px;
+}
+mat-toolbar{
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: space-between;
+   margin-bottom: 5px;
+   background: none;
+}
+.submit{
+    display: flex;
+    justify-content: center;
+}
+.submit button{
+    margin-right: 10px;
+}

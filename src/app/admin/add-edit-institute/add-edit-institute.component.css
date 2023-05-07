@@ -1,0 +1,112 @@
+#wrapper {
+  width: 900px;
+  padding-top: 18px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+mat-toolbar {
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(0 0 0 / 4%);
+}
+
+::ng-deep .mat-dialog-container {
+  width: auto !important;
+  padding: 0px !important;
+  background-color: whitesmoke;
+}
+
+mat-form-field {
+  margin-left: 18px;
+  padding: 0px;
+  width: calc(100% - 69.5%)
+}
+
+textarea {
+  height: 17px;
+}
+
+.user_image {
+  height: 124px;
+  width: calc(100% - 69.5%);
+  cursor: pointer;
+  float:right;
+  margin: -10px 18px 0px 0px;
+  display: grid;
+  justify-content: center;
+}
+
+img {
+  margin: 0px 0px 0px 18%;
+  padding: 5px;
+  width: 140px;
+  height: 140px;
+  border-radius: 100%;
+}
+
+.submit {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  flex-wrap: wrap;
+  margin-bottom: 15px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (min-width:1200px) {}
+
+@media(min-width:990px) and (max-width:1200px) {
+
+  #wrapper {
+    width: 100% !important;
+  }
+}
+
+@media(min-width:768px) and (max-width:990px) {
+
+  #wrapper {
+    width: 100% !important;
+    overflow-y: scroll;
+    height: 500px;
+  }
+
+  mat-form-field {
+    padding: 0px;
+    width: calc(100% - 54%)
+  }
+
+  .user_image {
+    width: calc(100% - 54%);
+  }
+  
+  .user_image {
+    margin: 0px 18px 18px 0px;
+  }
+}
+
+@media (max-width:768px) {
+  #wrapper {
+    width: 100% !important;
+    overflow-y: scroll;
+    height: 550px;
+  }
+
+  mat-form-field {
+    width: calc(100% - 38px) !important;
+    position: relative;
+    left: 2px;
+    right: 5px;
+  }
+
+  .user_image {
+    margin-bottom: 30px;
+    width: calc(100% - 38px);
+  }
+}

@@ -1,0 +1,73 @@
+  /* for toggale button on time coolor change  */
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-bar {
+  background-color: #075e2e;
+
+}
+
+:host ::ng-deep .mat-slide-toggle.mat-checked:not(.mat-disabled) .mat-slide-toggle-thumb {
+  background-color: #070b15;
+}
+
+/* for bydubfult */
+:host ::ng-deep .mat-slide-toggle-bar {
+  background-color: #b80c0c;
+}
+
+:host ::ng-deep .mat-slide-toggle-thumb {
+  background-color: #6c1805;
+}
+
+/* for table starting always */
+table {
+    width: 100%;
+  }
+  
+  th.mat-header-cell {
+    color: rgb(255, 255, 255);
+    background-color: #1d1f23;
+    font-size: 13px;
+    white-space: nowrap;
+    padding: 0px 10px !important;
+  }
+  td.mat-cell {
+    padding: 0px 10px !important;
+    white-space: nowrap;
+    font-size: 13px;
+  }
+  
+  tr:nth-child(even) {
+    background-color: rgb(200, 200, 200);
+  }
+  
+  tr:hover {
+    background-color: #494949;
+    color: rgb(253, 253, 253);
+  }
+  
+  .mat-row:hover>.mat-cell {
+    color: white;
+  }
+  .mat-elevation-z8 {
+    overflow: auto;
+    height: 505px;
+  }
+  #thead {
+    height: 45px;
+  }
+  
+  @media (min-width:1200px) {}
+  
+  @media(min-width:990px) and (max-width:1200px) {}
+  
+  @media(min-width:768px) and (max-width:990px) {
+  
+  }
+  
+  @media(min-width:420px) and (max-width:768px) {
+  
+  }
+  
+  @media(max-width:420px) {
+  
+  }
+  

@@ -1,0 +1,26 @@
+<mat-toolbar>
+    <span>Add Notification</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="notification_form">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Notification</mat-label>
+            <input matInput formControlName="notification" placeholder="Enter Notification">
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description" placeholder="Enter description"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button mat-raised-button color="warn" (click)="notification_data_reset()">Reset</button>&nbsp;&nbsp;&nbsp;
+            <button mat-raised-button color="primary" (click)="notification_btn()"
+                [disabled]="!notification_form.valid">{{actionBtn}}</button>
+        </div>
+    </form>
+</div>

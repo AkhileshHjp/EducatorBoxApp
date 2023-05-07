@@ -1,0 +1,156 @@
+<div class="sidebar">
+    <div class="top_head">{{inst_name | titlecase}}</div>
+    <div class="menu">
+        <button mat-button class="menu-button" [routerLink]="['dashboard']" routerLinkActive="active">
+            <mat-icon>dashboard</mat-icon>
+            <span>Dashboard</span>
+        </button>
+
+        <div>
+            <button mat-button class="menu-button" (click)="dropdown_master()" routerLinkActive="active">
+                <mat-icon>dvr</mat-icon>
+                <span>Master Entry</span>
+                <mat-icon [hidden]="action_icon3">chevron_right</mat-icon>
+                <mat-icon [hidden]="action_icon4">expand_more</mat-icon>
+            </button>
+
+            <div id="dropdown_master">
+                <button mat-button class="master_icon" [routerLink]="['course']" routerLinkActive="active">
+                    <mat-icon>school</mat-icon>
+                    <span>Course</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['batch']" routerLinkActive="active">
+                    <mat-icon>local_library</mat-icon>
+                    <span>Batch</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['instnotification']" routerLinkActive="active">
+                    <mat-icon>notifications</mat-icon>
+                    <span>Notification</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['instquizdashboard']" routerLinkActive="active">
+                    <mat-icon>quiz</mat-icon>
+                    <span>Quiz</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['employee']" routerLinkActive="active">
+                    <mat-icon>supervisor_account</mat-icon>
+                    <span>Employee</span>
+                </button>
+
+
+            </div>
+        </div>
+
+        <button mat-button class="menu-button" [routerLink]="['enquiry']" routerLinkActive="active">
+            <mat-icon>transfer_within_a_station</mat-icon>
+            <span>Enquiry</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['student']" routerLinkActive="active">
+            <mat-icon>library_books</mat-icon>
+            <span>Registration</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['admission']" routerLinkActive="active">
+            <mat-icon>airline_seat_recline_normal</mat-icon>
+            <span>Admission</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['fee']" routerLinkActive="active">
+            <mat-icon>payment</mat-icon>
+            <span>Fee</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['dues']" routerLinkActive="active">
+            <mat-icon>redeem</mat-icon>
+            <span>Dues</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['liveclass']" routerLinkActive="active">
+            <mat-icon>chrome_reader_mode</mat-icon>
+            <span>Live Class</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['oes']" routerLinkActive="active">
+            <mat-icon>pets</mat-icon>
+            <span>OES</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['elearning']" routerLinkActive="active">
+            <mat-icon>explicit</mat-icon>
+            <span>E-Learning</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['instquery']" routerLinkActive="active">
+            <mat-icon>equalizer</mat-icon>
+            <span>Query</span>
+        </button>
+
+        <button mat-button class="menu-button" [routerLink]="['certificate']" routerLinkActive="active">
+            <mat-icon>file_copy</mat-icon>
+            <span>Issue Certificate</span>
+        </button>
+
+        <div>
+            <button mat-button class="menu-button" (click)="account_dropdown()" routerLinkActive="active">
+                <mat-icon>business</mat-icon>
+                <span>Account</span>
+                <mat-icon [hidden]="action_icon5">chevron_right</mat-icon>
+                <mat-icon [hidden]="action_icon6">expand_more</mat-icon>
+            </button>
+
+            <div id="dropdown_account">
+                <button mat-button class="master_icon" [routerLink]="['expence']" routerLinkActive="active">
+                    <mat-icon>explicit</mat-icon>
+                    <span>Expense</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['ledger']" routerLinkActive="active">
+                    <mat-icon>book</mat-icon>
+                    <span>Ledger</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['profitloss']" routerLinkActive="active">
+                    <mat-icon>notes</mat-icon>
+                    <span>Profit & Loss</span>
+                </button>
+
+            </div>
+        </div>
+        <div>
+            <button mat-button class="menu-button" (click)="dropdown_study()" routerLinkActive="active">
+                <mat-icon>list_alt</mat-icon>
+                <span>Study Material</span>
+                <mat-icon [hidden]="action_icon1">chevron_right</mat-icon>
+                <mat-icon [hidden]="action_icon2">expand_more</mat-icon>
+            </button>
+
+            <div id="dropdown_study">
+                <button mat-button class="master_icon" [routerLink]="['instbook']" routerLinkActive="active">
+                    <mat-icon>book</mat-icon>
+                    <span>Book</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['instnotes']" routerLinkActive="active">
+                    <mat-icon>notes</mat-icon>
+                    <span>Notes</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['instsyllabus']" routerLinkActive="active">
+                    <mat-icon>style</mat-icon>
+                    <span>Syllabus</span>
+                </button>
+
+                <button mat-button class="master_icon" [routerLink]="['instquestionbank']" routerLinkActive="active">
+                    <mat-icon>question_answer</mat-icon>
+                    <span>Question Bank</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div>
+    </div>
+</div>

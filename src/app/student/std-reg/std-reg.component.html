@@ -1,0 +1,77 @@
+<mat-toolbar>
+    <span>Student Registration</span>
+    <mat-icon mat-dialog-close>cancel</mat-icon>
+</mat-toolbar>
+<div id="wrapper">
+    <form [formGroup]="std_regist_from">
+
+        <mat-form-field appearance="fill">
+            <mat-label>Institute</mat-label>
+            <mat-select formControlName="institute_id_fk" (valueChange)="regist_no_generate($event)"
+                [disabled]="disable_box">
+                <mat-option *ngFor="let inst of inst_data" [value]="inst.inst_id">{{inst.inst_name |
+                    titlecase}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Institute</mat-label>
+            <input type="text" matInput formControlName="institute_id_fk" [readonly]="disable_box" placeholder="Search Institute Name" (keyup)="onsearch($event)">
+        </mat-form-field><br>
+        <mat-card *ngFor="let inst of instituete_name" (click)="oninstid($event)">{{inst.inst_name}} {{inst.inst_id}} {{inst.inst_address}} </mat-card> -->
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Name</mat-label>
+            <input type="text" matInput formControlName="std_name" [readonly]="disable_box" placeholder="Enter name">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>WhatsApp No</mat-label>
+            <input type="number" matInput formControlName="std_whatsapp_no" onkeypress=" return this.value.length < 10"
+                [readonly]="disable_box" placeholder="Enter whatsapp no">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E-mail</mat-label>
+            <input type="email" matInput formControlName="std_email" [readonly]="disable_box" placeholder="Enter email">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" id="password">
+            <mat-label>Create Password </mat-label>
+            <input matInput [type]="hide ? 'password' : 'text'" placeholder="create password "
+                formControlName="std_password" onkeypress=" return this.value.length < 12" [readonly]="disable_box"
+                placeholder="Enter password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="std_address" [readonly]="disable_box" placeholder="Enter address"
+                class="address"></textarea>
+        </mat-form-field>
+
+        <input type="number" readonly [ngModel]="admin" formControlName="admin_id_fk" hidden>
+
+        <div class="submit">
+            <button [disabled]="disable_box" mat-raised-button color="primary" (click)="std_regist()"
+                [disabled]="!std_regist_from.valid">{{action_btn}}</button>
+        </div>
+
+        <div [hidden]="otp_hidden_area">
+
+            <mat-form-field appearance="fill" class="reg_otp">
+                <mat-label>OTP</mat-label>
+                <input type="number" matInput formControlName="otp_recive" (keyup)="match_otp()"
+                    placeholder="Enter Email OTP" onkeypress=" return this.value.length < 6">
+            </mat-form-field>
+
+            <div class="submit">
+                <button mat-raised-button color="primary" (click)="std_regist()">Resend</button> &nbsp; &nbsp;
+                <button mat-raised-button color="primary" (click)="final_submit()">Verify</button>
+            </div>
+        </div>
+    </form>
+</div>

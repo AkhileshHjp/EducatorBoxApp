@@ -1,9 +1,8 @@
-<div class="main_area">
-    <a  *ngFor="let course of course_quiz" >
-        <div id="thumbnail" class="color4" (click)="OnQuiz(course)">
-            <mat-icon>school</mat-icon><br>
-            <span><b>{{course.total_quiz}}</b></span><br><br>
-            <span>{{course.course_name}}</span>
-        </div>
-    </a>
+<div id="thumbnail">
+    <div class="thumbnail_box" routerLink="/institutehome/course" (click)="OnQuiz(course)"
+        *ngFor="let course of course_quiz">
+        <mat-icon>school</mat-icon>
+        <b>{{course.total_quiz}}</b>
+        <span>{{course.course_name}}</span>
+    </div>
 </div>

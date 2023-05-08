@@ -18,7 +18,7 @@ export class StudentHomeComponent implements OnInit {
   opened: boolean = true
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
-  url: string = 'https://educatorbox.com/assets/h';
+  url: string = 'https://educatorbox.com/assets/';
   img_url: string = '';
   login_deatils: any
   login: any

@@ -73,7 +73,7 @@
   #thumbnail {
     padding: 0px 3px 15px 0px;
     overflow-y: scroll;
-    height:calc(100vh - 105px);  
+    height:calc(100vh - 64px);  
   }
 
   .thumbnail_box {
@@ -101,7 +101,7 @@
   #thumbnail {
     padding: 0px 3px 15px 0px;
     overflow-y: scroll;
-    height:calc(100vh - 105px);  
+    height:calc(100vh - 64px);  
   }
 
   .thumbnail_box {

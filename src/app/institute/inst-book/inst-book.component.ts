@@ -126,6 +126,7 @@ export class InstBookComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.count_inst_book=this.dataSource.filteredData.length;
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

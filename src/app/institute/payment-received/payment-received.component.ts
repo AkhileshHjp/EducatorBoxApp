@@ -123,6 +123,7 @@ export class PaymentReceivedComponent implements OnInit {
   onmonth(month: any) {
     if (month == 'all') {
       this.onyear(this.cur_year)
+      this.count_payment = this.dataSource.data.filter((f: any) => f.std_name.search(new RegExp(this.dataSource.filter, 'i')) > -1).map((t: any) => t.net_amount).reduce((acc, value) => Number(acc) + Number(value), 0);
     } else {
       const cur_month = this.cur_year + "-" + month
       this.dataSource.data = this.FilterData.filter((f: any) => f.fee_date.slice(0, 7).search(new RegExp(cur_month, 'i')) > -1).map((t: any) => t)
@@ -150,6 +151,7 @@ export class PaymentReceivedComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.count_payment=this.dataSource.filteredData.length;
 
     this.total_netamount = this.dataSource.data.filter((f: any) => f.std_name.search(new RegExp(this.dataSource.filter, 'i')) > -1).map((t: any) => t.net_amount).reduce((acc, value) => Number(acc) + Number(value), 0);
     this.total_amount = this.dataSource.data.filter((f: any) => f.std_name.search(new RegExp(this.dataSource.filter, 'i')) > -1).map((t: any) => t.fee_amount).reduce((acc, value) => Number(acc) + Number(value), 0);

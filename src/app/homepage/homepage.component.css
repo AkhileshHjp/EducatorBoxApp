@@ -2,19 +2,17 @@
   width: 100%;
   height: 100%;
   background-image: linear-gradient(to top, #cfcfd6, #d8d8de, #e1e1e5, #eaeaed, #f3f3f5, #f3f3f5, #f3f3f5, #f3f3f5, #eaeaed, #e1e1e5, #d8d8de, #cfcfd6);
-  padding-top: env(safe-area-insert-top);
-  height: calc(65px + env(safe-area-insert-top));
 }
 
 #header {
   width: 100%;
-  height: 80px;
+  height: 50px;
   padding-left: 16px;
   font-size: 23px;
   font-weight: 500;
   color: whitesmoke;
   background-color: #273746;
-  line-height: 115px;
+  line-height:55px;
 }
 
 .image {
@@ -30,7 +28,7 @@
 
 #main {
   width: 100%;
-  height: calc(100vh - 120px);
+  height: calc(100vh - 90px);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;

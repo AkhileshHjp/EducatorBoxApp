@@ -43,17 +43,17 @@ export class EmployeeLoginComponent implements OnInit {
               this.popup.success({ detail: 'Success', summary: 'Login Successfully...', })
             }
             else{
-              this.popup.error({ detail: 'Failed', summary: 'Invaid Username and Password...' })
+              this.popup.error({ detail: 'Failed', summary: 'Invalid Username or Password...' })
             }
           },
           (error: any) => {
             console.log(error)
-            this.popup.error({ detail: 'Failed', summary: 'Invaid Username and Password...' })
+            this.popup.error({ detail: 'Failed', summary: 'Invalid Username or Password...' })
           }
         )
       }
       else {
-        this.popup.error({ detail: 'Failed', summary: 'Account Not Found...' })
+        this.popup.error({ detail: 'Failed', summary: 'Please fill mandatory fields' })
       }
     }
   }

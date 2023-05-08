@@ -14,7 +14,7 @@ export class AppComponent {
   constructor(
     private route : Router
   ) {
-    StatusBar.setOverlaysWebView({overlay:true});
+    // StatusBar.setOverlaysWebView({overlay:true});
     this.login_deatils = localStorage.getItem('Token')
     this.login = JSON.parse(this.login_deatils)
     if(!this.login){

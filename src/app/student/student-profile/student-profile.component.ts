@@ -116,7 +116,7 @@ export class StudentProfileComponent implements OnInit {
         this.student_form.controls['admin_id_fk'].setValue(this.student_profile_data.admin_id_fk);
           this.autoselect = this.student_profile_data.std_gender
         if(this.student_profile_data.std_img){
-          this.image_url = 'assets/' + this.student_profile_data.std_img
+          this.image_url = 'https://educatorbox.com/assets/' + this.student_profile_data.std_img
         }
 
       })

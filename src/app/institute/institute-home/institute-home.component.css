@@ -7,12 +7,12 @@
 }
 .inst_name{
     position: relative;
-    top: 25px;
+    top:10px;
 }
-.name_text h6{
+/* .name_text h6{
     position: relative;
     top: 15px;
-}
+} */
 
 mat-sidenav {
     width: 250px;
@@ -25,7 +25,7 @@ mat-sidenav-container {
 }
 
 mat-toolbar {
-    height: 100px;
+    height: 60px;
     justify-content: space-between;
     background-color: #1d1f23;
     position: sticky;
@@ -37,7 +37,7 @@ mat-toolbar {
     background-color: transparent;
     position: relative;
     left: 5px;
-    top: 15px;
+    /* top: 15px; */
     border: none;
 }
 
@@ -48,7 +48,7 @@ mat-toolbar {
 mat-icon {
     font-size: 28px;
     color: whitesmoke;
-    line-height: 55px;
+    /* line-height: 55px; */
 }
 
 @media(max-width:768px) {

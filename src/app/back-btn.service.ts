@@ -30,7 +30,7 @@ export class BackBtnService {
     this.platform.ready().then(()=>{
       App.addListener('backButton',()=>{
         if(this.router.url!="/") {
-          // window.location.replace(this.previousUrl)
+          window.location.replace(this.previousUrl)
           window.location.href = this.previousUrl;
         }else{
           App.exitApp();

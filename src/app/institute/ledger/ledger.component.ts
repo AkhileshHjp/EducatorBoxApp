@@ -19,7 +19,7 @@ export class LedgerComponent implements OnInit {
   dataSource = new MatTableDataSource();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
-  count_ledger: string = '0'
+  count_ledger: number = 0
   login_deatils: any
   login: any
   inst_id: any
@@ -91,6 +91,7 @@ export class LedgerComponent implements OnInit {
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.count_ledger=this.dataSource.filteredData.length;
 
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();

@@ -67,16 +67,16 @@ export class InstituteLoginComponent implements OnInit {
 
           }
           else {
-            this.popup.error({ detail: 'Failed', summary: 'Invaid Username and Password...' })
+            this.popup.error({ detail: 'Failed', summary: 'Invalid Username or Password...' })
           }
         },
         (error: any) => {
-          this.popup.error({ detail: 'Failed', summary: 'Invaid Username and Password...' })
+          this.popup.error({ detail: 'Failed', summary: 'Invalid Username or Password...' })
         }
       )
     }
     else {
-      this.popup.error({ detail: 'Failed', summary: 'Account Not Found...' })
+      this.popup.error({ detail: 'Failed', summary: 'Please fill mandatory fields' })
     }
   }
 }

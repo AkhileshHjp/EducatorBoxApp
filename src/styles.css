@@ -92,7 +92,7 @@ mat-icon {
         width: calc(100vw - 40px);
         height: auto;
         position:fixed;
-        top: 120px;
+        top: 64px;
         left: 20px;
         right: 20px;
     }

@@ -76,7 +76,7 @@ input::-webkit-inner-spin-button {
 
   #wrapper {
     width: 100% !important;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 490px;
   }
 

@@ -9,11 +9,11 @@
     padding: 8px 10px;
 }
 
-/* #login_header h2 {
-    line-height: 120px;
+#login_header h2 {
+    /* line-height: 120px; */
     padding-left: 3px;
     font-size: 23px;
-} */
+}
 
 /* #login_header button {
     height: 38px;

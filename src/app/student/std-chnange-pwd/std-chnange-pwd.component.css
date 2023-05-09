@@ -51,7 +51,8 @@ input::-webkit-inner-spin-button {
 @media(max-width:768px) {
   #wrapper {
       width: 100% !important;
-      overflow-y: scroll;
+      overflow-y: auto;
+      height: 490px;
   }
 
   mat-toolbar {

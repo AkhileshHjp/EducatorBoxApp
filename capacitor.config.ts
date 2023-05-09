@@ -1,7 +1,7 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'com.EducatorBox.app',
+  appId: 'com.educatorbox.app',
   appName: 'EducatorBox',
   webDir: 'www',
   server: {

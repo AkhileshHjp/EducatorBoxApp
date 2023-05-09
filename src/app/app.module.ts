@@ -132,6 +132,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { LoginanotheComponent } from './admin/loginanothe/loginanothe.component';
 import { IonicModule } from '@ionic/angular';
+import { SinglealertComponent } from './admin/singlealert/singlealert.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -239,6 +240,7 @@ import { IonicModule } from '@ionic/angular';
     HomeEnquiryComponent,
     LiveClassComponent,
     LoginanotheComponent,
+    SinglealertComponent,
   ],
   imports: [
     BrowserModule,

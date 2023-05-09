@@ -1,6 +1,6 @@
 /* for sidebar scrollbar in all */
 ::-webkit-scrollbar {
-    width: 5px;
+    width: 0px;
     height: 5px;
     background-color: #cac7c7;
     color: black;

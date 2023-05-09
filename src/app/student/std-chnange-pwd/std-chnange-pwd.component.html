@@ -13,7 +13,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Aadhar No</mat-label>
-            <input matInput placeholder="Enter aadhar no" formControlName="std_aadhar" [readonly]="disable_box">
+            <input matInput type="number" placeholder="Enter aadhar no" formControlName="std_aadhar" [readonly]="disable_box">
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
@@ -40,7 +40,7 @@
         <!-- for student new password  -->
         <mat-form-field class="example-full-width" appearance="fill" [hidden]="passwordbox">
             <mat-label>Enter New Password</mat-label>
-            <input matInput placeholder="Enter OTP" [type]="hide ? 'password' : 'text'" formControlName="std_password"
+            <input matInput placeholder="Enter New Password" [type]="hide ? 'password' : 'text'" formControlName="std_password"
                 onkeypress=" return this.value.length < 12">
             <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
                 [attr.aria-pressed]="hide">

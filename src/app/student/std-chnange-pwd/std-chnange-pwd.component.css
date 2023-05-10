@@ -52,7 +52,7 @@ input::-webkit-inner-spin-button {
   #wrapper {
       width: 100% !important;
       overflow-y: auto;
-      height: 490px;
+      height:calc(100% - auto);
   }
 
   mat-toolbar {

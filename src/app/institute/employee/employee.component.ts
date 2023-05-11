@@ -61,7 +61,8 @@ export class EmployeeComponent implements OnInit {
   editEmp(row: any) {
     this.dailog.open(AddEditEmployeeComponent, {
       data: row,
-      disableClose: true
+      disableClose: true,
+      panelClass:'all_dialog'
     });
   }
 

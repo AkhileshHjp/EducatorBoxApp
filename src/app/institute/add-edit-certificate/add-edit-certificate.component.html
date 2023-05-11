@@ -1,11 +1,11 @@
 <div class="view_notice">
 	<span class="notice_text">{{action_text}}</span>
 </div>
-<nav ngbNav #nav="ngbNav" style="border-bottom: 1px solid gray; height: 47px;">
+<nav ngbNav #nav="ngbNav" #myIdentifier>
 
 	<!-- ////////////////////////////////////////// For Personal Information Form Starting Here ////////////////////////////////// -->
 	<ng-container ngbNavItem>
-		<a ngbNavLink class="certificate_link" routerLinkActive="active">Personal Information</a>
+		<a ngbNavLink [ngClass]="beforclass" routerLinkActive="active">Personal Information</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
 				<form [formGroup]="personal_form">
@@ -73,17 +73,18 @@
 								<mat-option value="Other">Other</mat-option>
 							</mat-select>
 						</mat-form-field>
-						
+
 
 						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 						<input type="number" readonly formControlName="certificate_id" redonly hidden>
 					</div>
+
+					<div mat-dialog-action [align]="'end'" id="main_button">
+						<button mat-raised-button class="add_btn" type="submit"
+							style="background-color: #1d1f23; color: white;" (click)="personal_add()"
+							[disabled]="!this.personal_form.valid" matStepperNext>Save & Next</button>
+					</div>
 				</form>
-				<div mat-dialog-action [align]="'end'" id="main_button">
-					<button mat-raised-button class="add_btn" type="submit"
-						style="background-color: #1d1f23; color: white;" (click)="personal_add()"
-						[disabled]="!this.personal_form.valid" matStepperNext>Save&Next</button>
-				</div>
 			</div>
 		</ng-template>
 	</ng-container>
@@ -91,7 +92,7 @@
 
 	<!-- /////////////////////////////////////////// For Permanent Address Form Starting Heare ////////////////////////////////////// -->
 	<ng-container ngbNavItem>
-		<a ngbNavLink class="certificate_link" routerLinkActive="active" (click)="get_certificate_id()">Permanent
+		<a ngbNavLink [ngClass]="beforclass" routerLinkActive="active" (click)="get_certificate_id()">Permanent
 			Address</a>
 		<ng-template ngbNavContent>
 			<div class="content_area">
@@ -171,12 +172,13 @@
 
 						<input type="number" readonly [ngModel]="admin_id" formControlName="admin_id_fk" hidden>
 					</div>
+
+					<div mat-dialog-action [align]="'end'" id="main_button">
+						<button mat-raised-button class="add_btn" type="submit"
+							style="background-color: #1d1f23; color: white;" (click)="permanent_update()"
+							[disabled]="!this.permanet_form.valid" matStepperNext>Save & Next</button>
+					</div>
 				</form>
-				<div mat-dialog-action [align]="'end'" id="main_button">
-					<button mat-raised-button class="add_btn" type="submit"
-						style="background-color: #1d1f23; color: white;" (click)="permanent_update()"
-						[disabled]="!this.permanet_form.valid" matStepperNext>Save&Next</button>
-				</div>
 			</div>
 		</ng-template>
 	</ng-container>
@@ -185,7 +187,7 @@
 	<!-- /////////////////////////////////////// for Registracton Form starting Here ////////////////////////////////// -->
 
 	<ng-container ngbNavItem><br>
-		<a ngbNavLink class="certificate_link" routerLinkActive="active">Certificate Details</a>
+		<a ngbNavLink [ngClass]="beforclass" routerLinkActive="active">Certificate Details</a>
 
 		<ng-template ngbNavContent>
 			<div class="content_area">
@@ -220,7 +222,8 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Registration Date</mat-label>
-							<input matInput type="date" class="boxdate" max="5050-01-01" formControlName="std_rigistration_date">
+							<input matInput type="date" class="boxdate" max="5050-01-01"
+								formControlName="std_rigistration_date">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -231,7 +234,8 @@
 
 						<mat-form-field appearance="fill">
 							<mat-label>Date Of Issue</mat-label>
-							<input type="date" class="boxdate" max="5050-01-01" matInput formControlName="std_date_issue">
+							<input type="date" class="boxdate" max="5050-01-01" matInput
+								formControlName="std_date_issue">
 						</mat-form-field>
 
 						<mat-form-field appearance="fill">
@@ -252,7 +256,7 @@
 						<div mat-dialog-action [align]="'end'" id="main_button">
 							<button mat-raised-button class="add_btn" type="submit"
 								style="background-color: #1d1f23; color: white;" (click)="registration_update()"
-								[disabled]="!this.registration_form.valid">Save&Next</button>
+								[disabled]="!this.registration_form.valid">Save & Next</button>
 						</div>
 					</div>
 				</form>
@@ -264,7 +268,7 @@
 
 	<!-- /////////////////////////////////////// for Upload Document Form starting Here ////////////////////////////////// -->
 	<ng-container ngbNavItem><br>
-		<a ngbNavLink class="certificate_link" routerLinkActive="active">Upload Document</a>
+		<a ngbNavLink [ngClass]="beforclass" routerLinkActive="active">Upload Document</a>
 
 		<ng-template ngbNavContent>
 			<div class="content_area">
@@ -344,16 +348,14 @@
 
 						</div>
 
+					</div><br>
+
+					<div mat-dialog-action [align]="'end'" id="main_button">
+						<button mat-raised-button class="add_btn" type="submit"
+							style="background-color: #1d1f23; color: white;" (click)="document_submit()">Final
+							Submit</button>
 					</div>
 				</form>
-				<br>
-				<br>
-				<br>
-				<div mat-dialog-action [align]="'end'" id="main_button">
-					<button mat-raised-button class="add_btn" type="submit"
-						style="background-color: #1d1f23; color: white;" (click)="document_submit()">Final
-						Submit</button>
-				</div>
 			</div>
 		</ng-template>
 	</ng-container>

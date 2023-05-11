@@ -32,7 +32,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
 }
 
 .add_btn {
@@ -120,6 +120,11 @@ img {
     width: 98%;
     padding: 0px 15px 0px 15px;
   }
+
+  form {
+    height: 420px;
+    overflow: auto;
+  }
 }
 
 @media(max-width:920px)and (min-width:768px) {
@@ -132,21 +137,46 @@ img {
     width: 98%;
     padding: 0px 15px 0px 15px;
   }
+
+  form {
+    height: 400px;
+    overflow: auto;
+  }
 }
 
 @media(max-width:768px) {
+  
+  nav {
+    width: 100%;
+    border-bottom: 1px solid gray;
+    height: auto;
+    padding-bottom: 5px;
+  }
   .certificate_link {
     text-align: center;
-    width: 100%;
-    margin: 5px 0px 0px 0px;
+    width: calc(100% - 52%);
+    margin: 5px 2px 0px 4px;
+  }
+  .certificate_link1 {
+    text-align: center;
+    width: calc(100% - 10px);
+    background-color: #1d1f23;
+    margin: 5px 2px 0px 4px;
+    color: whitesmoke;
   }
 
   mat-form-field {
-    width: 98%;
+    width:calc(100% - 15px);
     padding: 0px 15px 0px 15px;
   }
 
   .content_area {
-    margin-top: 140px;
+    margin-top:20px;
+  }
+  
+
+  form {
+    height: 400px;
+    overflow: auto;
   }
 }

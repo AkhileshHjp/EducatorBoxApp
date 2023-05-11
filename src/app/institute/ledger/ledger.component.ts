@@ -79,7 +79,11 @@ export class LedgerComponent implements OnInit {
   }
 
   add_ledger() {
-    this.matdialog.open(AddEditLedgerComponent)
+    this.matdialog.open(AddEditLedgerComponent,{
+    disableClose: true,
+    panelClass:'all_dialog'
+    })
+
   }
   edit_ledger(row: any) {
     this.matdialog.open(AddEditLedgerComponent, {

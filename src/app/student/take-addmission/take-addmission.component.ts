@@ -69,7 +69,8 @@ export class TakeAddmissionComponent implements OnInit {
     }
     else {
       this.dailog.open(AddEditTakeAddmissionComponent, {
-        disableClose: true
+        disableClose: true,
+        panelClass:'all_dialog'
       });
     }
 

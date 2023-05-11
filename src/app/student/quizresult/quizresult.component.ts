@@ -8,7 +8,7 @@ import { ManageService } from 'src/app/manage.service';
   styleUrls: ['./quizresult.component.css']
 })
 export class QuizresultComponent implements OnInit {
-  url: string = 'assets/';
+  url: string = 'https://educatorbox.com/assets/';
   img_url: string = '';
   login_deatils: any
   login: any

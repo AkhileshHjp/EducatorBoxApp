@@ -104,7 +104,8 @@ export class BatchComponent implements OnInit {
   batch_edit(row: any) {
     this.dailog.open(AddEditBatchComponent, {
       data: row,
-      disableClose: true
+      disableClose: true,
+      panelClass:'all_dialog'
     });
   }
 

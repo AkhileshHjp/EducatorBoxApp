@@ -71,14 +71,16 @@ export class InstQuizComponent implements OnInit {
   add_course() {
     this.dailog.open(AddEditInstQuizComponent, {
       disableClose: true,
-      data: this.course_data
+      data: this.course_data,
+      panelClass:'all_dialog'
     });
   }
 
   course_edit(row: any) {
     this.dailog.open(AddEditInstQuizComponent, {
       data: row,
-      disableClose: true
+      disableClose: true,
+      panelClass:'all_dialog'
     });
   }
 

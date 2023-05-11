@@ -95,23 +95,31 @@ mat-icon {
 
 @media(min-width:420px)and (max-width:767px) {
   .main_area {
-    padding-right: 0px;
+    padding: 0px 3px 15px 0px;
+    overflow-y: scroll;
+    height:calc(100vh - 64px);  
+  }
+  .main_area a{
+    text-decoration: none;
   }
 
   #thumbnail {
-    width: 90%;
-    margin: 5% 0% 0% 5%;
+    width: calc(100% - 15px);
+    margin-top: 11px;
+    margin-left: 9px;
+    float: none;
+    height: 100px;
   }
 
   #thumbnail span {
-    font-size: 20px;
+    font-size: 14px;
     line-height: 25px;
     margin-left: 10px;
   }
 
   mat-icon {
     font-size: 28px;
-    margin: 35px 0px 0px 0px;
+    margin: 35px 15px 0px 0px;
   }
 }
 
@@ -128,7 +136,7 @@ mat-icon {
   }
 
   #thumbnail span {
-    font-size: 15px;
+    font-size: 14px;
     line-height: 25px;
     margin-left: 10px;
   }

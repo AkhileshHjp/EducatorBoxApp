@@ -107,7 +107,8 @@ export class CourseComponent implements OnInit {
   course_edit(row: any) {
     this.dailog.open(AddEditCourseComponent, {
       data: row,
-      disableClose: true
+      disableClose: true,
+      panelClass:'all_dialog'
     });
   }
   course_delete(row: any) {

@@ -64,13 +64,15 @@ export class ExpenceComponent implements OnInit {
 
   add_expense() {
     this.dailog.open(AddEditExpenceComponent, {
-      disableClose: true
+      disableClose: true,
+      panelClass:'all_dialog'
     });
   }
   edit_expense(row: any) {
     this.dailog.open(AddEditExpenceComponent, {
       data: row,
       disableClose: true,
+      panelClass:'all_dialog'
     });
   }
 

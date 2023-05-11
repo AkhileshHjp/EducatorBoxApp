@@ -54,7 +54,7 @@ mat-icon {
 @media(max-width:768px) {
 
     mat-sidenav {
-        width: 200px;
+        width:175px;
         background-color: #1d1f23;
     }
     .name_text{

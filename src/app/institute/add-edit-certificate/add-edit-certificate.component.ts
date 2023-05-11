@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, OnInit ,AfterViewInit, Input, ViewChild, ElementRef} from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ManageService } from 'src/app/manage.service';
 import { NgToastService } from 'ng-angular-popup';
@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   templateUrl: './add-edit-certificate.component.html',
   styleUrls: ['./add-edit-certificate.component.css']
 })
-export class AddEditCertificateComponent implements OnInit {
+export class AddEditCertificateComponent implements OnInit  {
   action_text: string = 'Issue Certificate'
   certificate_count: string = "0"
   personal_form!: FormGroup
@@ -47,6 +47,8 @@ export class AddEditCertificateComponent implements OnInit {
 
   Country= "India"
   state= "Bihar"
+
+  beforclass = 'certificate_link'
   constructor(
     private personal: FormBuilder,
     private permanet: FormBuilder,
@@ -219,6 +221,24 @@ export class AddEditCertificateComponent implements OnInit {
       })
     }
   }
+
+  
+
+
+  ngAfterViewChecked() {
+    var width = this.myIdentifier.nativeElement.offsetWidth;
+    var height = this.myIdentifier.nativeElement.offsetHeight;
+       if(width < 300){
+        this.beforclass = 'certificate_link1'
+      }else{
+        this.beforclass = 'certificate_link'
+      }
+  }
+  
+  @ViewChild('myIdentifier')
+  myIdentifier!: ElementRef;
+
+
   
   personal_add() {
     if(this.certificate_id > 0){
